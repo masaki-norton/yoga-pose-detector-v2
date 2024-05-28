@@ -1,5 +1,6 @@
 import streamlit as st
 import cv2
+import os
 import numpy as np
 import joblib
 import mediapipe as mp
@@ -9,6 +10,11 @@ import warnings
 from get_landmarks import get_landmarks_simple, get_landmarks_from_pose
 from tensorflow.keras.models import load_model
 
+# testing area
+import os
+
+# ---------
+
 tf.get_logger().setLevel("ERROR")
 warnings.filterwarnings('ignore', message="X does not have valid feature names")
 
@@ -16,8 +22,8 @@ warnings.filterwarnings('ignore', message="X does not have valid feature names")
 cap = cv2.VideoCapture(0)
 
 # Load models
-model = load_model("models/nn_v1.h5")
-pipeline = joblib.load("models/pipeline.pkl")
+model = load_model("models/nn_v1_1.h5")
+pipeline = joblib.load("models/pipeline_v1_1.pkl")
 
 # Initialize frames
 st.title("Yoga Pose Estimation")
@@ -51,7 +57,7 @@ while True:
         output_box.markdown(
             f"<div style='text-align: center; font-size: 24px;'>"
             f"Predicted Pose: {poses[np.argmax(pred)]}"
-            f"Pred. Confidence: {np.max(pred)}"
+            f"Pred. Confidence: {np.max(pred.round(2))}"
             f"</div>",
             unsafe_allow_html=True
         )
