@@ -2,11 +2,12 @@ import streamlit as st
 import cv2
 import numpy as np
 import joblib
-from get_landmarks import get_landmarks_simple, get_landmarks_from_pose
 import mediapipe as mp
 import tensorflow as tf
-from tensorflow.keras.models import load_model
 import warnings
+
+from get_landmarks import get_landmarks_simple, get_landmarks_from_pose
+from tensorflow.keras.models import load_model
 
 tf.get_logger().setLevel("ERROR")
 warnings.filterwarnings('ignore', message="X does not have valid feature names")
