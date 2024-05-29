@@ -87,5 +87,5 @@ if "output_text" not in st.session_state:
 # Update the UI in an event-driven manner
 st.experimental_rerun = True  # This should be used to trigger the rerun in an event-driven way
 
-if st.experimental_rerun:
-    update_ui()
+# if st.experimental_rerun:
+#     update_ui()
